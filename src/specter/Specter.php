@@ -33,7 +33,7 @@ class Specter extends PluginBase implements Listener {
 	 *
 	 * @return bool
 	 */
-    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool {
+    public function onCommand(CommandSender $sender, Command $command, $label, array $args){
         if(isset($args[0])){
             switch($args[0]){
                 case 'spawn':
