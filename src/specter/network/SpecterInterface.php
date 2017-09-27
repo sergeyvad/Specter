@@ -59,7 +59,7 @@ class SpecterInterface implements SourceInterface{
                 case ResourcePacksInfoPacket::class:
                     $pk = new ResourcePackClientResponsePacket();
                     $pk->status = ResourcePackClientResponsePacket::STATUS_COMPLETED;
-                    $pk->handle($player->getSessionAdapter());
+                    $player->handleDataPacket($pk);
                     break;
                 case TextPacket::class:
                 	/** @var TextPacket $packet */
@@ -192,7 +192,7 @@ class SpecterInterface implements SourceInterface{
             $pk->skin = str_repeat("\x80", 64 * 32 * 4);
             $pk->skinId = "Standard_Alex";
 
-            $pk->handle($player->getSessionAdapter());
+            $player->handleDataPacket($pk);
 
             return true;
         }
@@ -224,7 +224,7 @@ class SpecterInterface implements SourceInterface{
             $player = $this->specter->getServer()->getPlayer($name);
             if($player instanceof SpecterPlayer){
                 foreach($packets as $pk){
-                    $pk->handle($player->getSessionAdapter());
+                    $player->handleDataPacket($pk);
                 }
             }
             $this->replyStore[$name] = [];
