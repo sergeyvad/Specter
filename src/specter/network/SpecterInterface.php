@@ -52,7 +52,7 @@ class SpecterInterface implements SourceInterface{
      *
      * @return int
      */
-    public function putPacket(Player $player, DataPacket $packet, bool $needACK = false, bool $immediate = true){
+    public function putPacket(Player $player, DataPacket $packet, $needACK = false, $immediate = true){
         if($player instanceof SpecterPlayer) {
             //$this->specter->getLogger()->info(get_class($packet));
             switch (get_class($packet)){
