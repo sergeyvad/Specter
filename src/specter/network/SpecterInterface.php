@@ -2,7 +2,7 @@
 namespace specter\network;
 
 use pocketmine\network\mcpe\protocol\BatchPacket;
-use pocketmine\network\mcpe\protocol\DataPacket;
+use pocketmine\network\protocol\DataPacket;
 use pocketmine\network\mcpe\protocol\LoginPacket;
 use pocketmine\network\mcpe\protocol\MovePlayerPacket;
 use pocketmine\network\mcpe\protocol\PacketPool;
@@ -159,7 +159,7 @@ class SpecterInterface implements SourceInterface{
      * @param string $reason
      *
      */
-    public function close(Player $player, string $reason = "unknown reason"){
+    public function close(Player $player, $reason = "unknown reason"){
         $this->sessions->detach($player);
         unset($this->ackStore[$player->getName()]);
         unset($this->replyStore[$player->getName()]);
@@ -168,7 +168,7 @@ class SpecterInterface implements SourceInterface{
     /**
      * @param string $name
      */
-    public function setName(string $name){
+    public function setName($name){
         // TODO: Implement setName() method.
     }
     public function openSession($username, $address = "SPECTER", $port = 19133){
